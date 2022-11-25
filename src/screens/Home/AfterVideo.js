@@ -70,34 +70,34 @@ const AfterVideo = (props) => {
       confetti: false
     }
   ])
-  
+
   const b = props?.route?.params?.back;
 
   useFocusEffect(
     React.useCallback(() => {
       StatusBar.setHidden(true)
-        getFlag()
-        start()
+      getFlag()
+      start()
     }, [])
-);
-  const getFlag=async()=>{
+  );
+  const getFlag = async () => {
     // setFlag(JSON.parse( ))
-console.log(JSON.parse(await AsyncStorage.getItem("sound")),"sooound"); 
+    console.log(JSON.parse(await AsyncStorage.getItem("sound")), "sooound");
   }
   const start = async () => {
-let a=JSON.parse( await AsyncStorage.getItem("sound"))
+    let a = JSON.parse(await AsyncStorage.getItem("sound"))
     await TrackPlayer.reset()
     await TrackPlayer.add({
       id: 2323,
       url: require('../../assets/initial.mp3'),
     });
-    if(a){
+    if (a) {
       console.log("sdas");
       await TrackPlayer.play();
     }
   }
   const fun = async () => {
-    let a=JSON.parse( await AsyncStorage.getItem("sound"))
+    let a = JSON.parse(await AsyncStorage.getItem("sound"))
 
     setTimeout(() => {
       setPress(true);
@@ -109,7 +109,7 @@ let a=JSON.parse( await AsyncStorage.getItem("sound"))
       url: require('../../assets/sound.mp3'),
     });
 
-if(a){
+    if (a) {
       await TrackPlayer.play();
     }
     setTimeout(() => {
@@ -118,14 +118,14 @@ if(a){
   }
 
   const setAll = async () => {
-    let a=JSON.parse( await AsyncStorage.getItem("sound"))
+    let a = JSON.parse(await AsyncStorage.getItem("sound"))
 
     await TrackPlayer.reset()
     await TrackPlayer.add({
       id: 432,
       url: require("../../assets/try.mp3"),
     });
-    if(a){
+    if (a) {
       await TrackPlayer.play();
     }
 
@@ -150,14 +150,14 @@ if(a){
     }, 500)
   }
   const voic = async (message) => {
-    let a=JSON.parse( await AsyncStorage.getItem("sound"))
+    let a = JSON.parse(await AsyncStorage.getItem("sound"))
 
     await TrackPlayer.reset()
     await TrackPlayer.add({
       id: message.source,
       url: message.source,
     });
-    if(a){
+    if (a) {
       await TrackPlayer.play();
     }
   }
@@ -229,7 +229,7 @@ if(a){
                 <Text style={arra[0].name == "RainDrop" ? styles.redText : styles.greyText}>RainDrop</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/1/1.5s.mp3") })}>
-                <Text style={arra[1].name == "umbrella" ? styles.redText : styles.greyText}>umbrella</Text>
+                <Text style={arra[1].name == "umbrella" ? styles.redText : styles.greyText}>Umbrella</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/1/1.3s.mp3") })}>
                 <Text style={arra[2].name == "sun" ? styles.redText : styles.greyText}>Sun</Text>
@@ -237,10 +237,10 @@ if(a){
             </View>
             <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/1/1.2s.mp3") })}>
-                <Text style={arra[3].name == "salmon" ? styles.redText : styles.greyText}>salmon</Text>
+                <Text style={arra[3].name == "salmon" ? styles.redText : styles.greyText}>Salmon</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/1/1.4s.mp3") })}>
-                <Text style={arra[4].name == "ukulele" ? styles.redText : styles.greyText}>ukulele</Text>
+                <Text style={arra[4].name == "ukulele" ? styles.redText : styles.greyText}>Ukulele</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -406,11 +406,11 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/2/2.6s.mp3") })}>
                 <Text style={arra[5].name == "Watermelon" ? styles.redText : styles.greyText}>Watermelon</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/2/2.1s.mp3") })}>
                 <Text style={arra[0].name == "Apple" ? styles.redText : styles.greyText}>Apple</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/2/2.3s.mp3") })}>
                 <Text style={arra[2].name == "Beehive" ? styles.redText : styles.greyText}>Beehive</Text>
               </TouchableOpacity>
@@ -438,7 +438,7 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
                 voic({ source: require("../../assets/4/4.3s.mp3") }), funct({ id: 1, value: true, name: "ButterFly", confetti: true }), conf(0), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
               }} >
-                <Image source={arra[0].value ? require('../../assets/4/4.3g.png') : require('../../assets/4/4.3.png')} style={{ height:arra[0].value? Theme.height / 9:Theme.height / 10, width: arra[0].value? Theme.height / 5:Theme.height / 6 }} />
+                <Image source={arra[0].value ? require('../../assets/4/4.3g.png') : require('../../assets/4/4.3.png')} style={{ height: arra[0].value ? Theme.height / 9 : Theme.height / 10, width: arra[0].value ? Theme.height / 5 : Theme.height / 6 }} />
               </TouchableOpacity>
               {arra[0].confetti && (
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -5 }} />
@@ -513,11 +513,11 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/4/4.1s.mp3") })}>
                 <Text style={arra[2].name == "Ball" ? styles.redText : styles.greyText}>Ball</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/4/4.4s.mp3") })}>
                 <Text style={arra[4].name == "Caterpillar" ? styles.redText : styles.greyText}>Caterpillar</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/4/4.2s.mp3") })}>
                 <Text style={arra[3].name == "Bee" ? styles.redText : styles.greyText}>Bee</Text>
               </TouchableOpacity>
@@ -616,7 +616,7 @@ if(a){
 
       return <View style={{ flex: 1 }}>
         <View >
-          <FastImage source={{ uri: b.background, priority: FastImage.priority.high }} resizeMode="stretch"  style={styles.backImage} >
+          <FastImage source={{ uri: b.background, priority: FastImage.priority.high }} resizeMode="stretch" style={styles.backImage} >
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 5 : Theme.width / 4.5, zIndex: 1, marginTop: Theme.height / 10 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/5/5.3s.mp3") }), funct({ id: 1, value: true, name: "Guitar", confetti: true }), conf(0), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null }} >
                 <Image source={arra[0].value ? require('../../assets/5/5.3g.png') : require('../../assets/5/5.3.png')} style={{ height: Theme.height / 7, width: Theme.height / 10 }} />
@@ -642,9 +642,9 @@ if(a){
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -6 }} />
               )}
             </View>
-            <View style={[styles.ass, { marginLeft: isTablet ? arra[4].value?  Theme.width / 15: Theme.width / 13 : Theme.width / 15, marginTop: arra[4].value? Theme.height / 2.2:Theme.height / 2.14, zIndex: 1 }]}>
+            <View style={[styles.ass, { marginLeft: isTablet ? arra[4].value ? Theme.width / 15 : Theme.width / 13 : Theme.width / 15, marginTop: arra[4].value ? Theme.height / 2.2 : Theme.height / 2.14, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/5/5.4s.mp3") }), funct({ id: 5, value: true, name: "Turtle", confetti: true }), conf(4), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[0].value == true && arra[5].value == true ? fun() : null }} >
-                <Image source={arra[4].value ? require('../../assets/5/5.4g.png') : require('../../assets/5/5.4.png')} style={{ height:arra[4].value? Theme.height / 5 :Theme.height/5.5, width:arra[4].value? Theme.height / 7:Theme.height/8 }} />
+                <Image source={arra[4].value ? require('../../assets/5/5.4g.png') : require('../../assets/5/5.4.png')} style={{ height: arra[4].value ? Theme.height / 5 : Theme.height / 5.5, width: arra[4].value ? Theme.height / 7 : Theme.height / 8 }} />
               </TouchableOpacity>
               {arra[4].confetti && (
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -6 }} />
@@ -690,7 +690,6 @@ if(a){
               </TouchableOpacity>
             </View>
             <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-              
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/5/5.5s.mp3") })}>
                 <Text style={arra[5].name == "Guy" ? styles.redText : styles.greyText}>Guy</Text>
               </TouchableOpacity>
@@ -711,8 +710,8 @@ if(a){
           <FastImage source={{ uri: b.background, priority: FastImage.priority.high }} resizeMode="stretch" style={styles.backImage} >
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 7 : Theme.width / 6.7, zIndex: 1, marginTop: Theme.height / 8 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
-                 voic({ source: require("../../assets/7/7.3s.mp3") }),
-                funct({ id: 1, value: true, name: "Harmonica", confetti: true }), conf(0), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
+                voic({ source: require("../../assets/7/7.3s.mp3") }),
+                  funct({ id: 1, value: true, name: "Harmonica", confetti: true }), conf(0), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
               }} >
                 <Image source={arra[0].value ? require('../../assets/7/7.3g.png') : require('../../assets/7/7.3.png')} style={{ height: Theme.height / 20, width: Theme.height / 10 }} />
               </TouchableOpacity>
@@ -723,8 +722,8 @@ if(a){
 
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 2.4 : Theme.width / 2.4, marginTop: Theme.height / 2.4, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
-                voic({ source: require("../../assets/7/7.1s.mp3") }), 
-                funct({ id: 3, value: true, name: "Brush", confetti: true }), conf(2), arra[1].value == true && arra[0].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
+                voic({ source: require("../../assets/7/7.1s.mp3") }),
+                  funct({ id: 3, value: true, name: "Brush", confetti: true }), conf(2), arra[1].value == true && arra[0].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
               }} >
                 <Image source={arra[2].value ? require('../../assets/7/7.1g.png') : require('../../assets/7/7.1.png')} style={{ height: Theme.height / 8, width: Theme.height / 16 }} />
               </TouchableOpacity>
@@ -735,7 +734,7 @@ if(a){
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 1.6 : Theme.width / 1.6, marginTop: Theme.height / 8.5, zIndex: 1, }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
                 voic({ source: require("../../assets/7/7.2s.mp3") }),
-                funct({ id: 4, value: true, name: "Bubble", confetti: true }), conf(3), arra[1].value == true && arra[2].value == true && arra[0].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
+                  funct({ id: 4, value: true, name: "Bubble", confetti: true }), conf(3), arra[1].value == true && arra[2].value == true && arra[0].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
               }} >
                 <Image source={arra[3].value ? require('../../assets/7/7.2g.png') : require('../../assets/7/7.2.png')} style={{ height: Theme.height / 7.9, width: Theme.height / 8 }} />
               </TouchableOpacity>
@@ -745,8 +744,8 @@ if(a){
             </View>
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 1.2 : Theme.width / 1.15, marginTop: Theme.height / 2.9, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
-                 voic({ source: require("../../assets/7/7.4s.mp3") }),
-                funct({ id: 5, value: true, name: "Maracas", confetti: true }), conf(4), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[0].value == true && arra[5].value == true ? fun() : null
+                voic({ source: require("../../assets/7/7.4s.mp3") }),
+                  funct({ id: 5, value: true, name: "Maracas", confetti: true }), conf(4), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[0].value == true && arra[5].value == true ? fun() : null
               }} >
                 <Image source={arra[4].value ? require('../../assets/7/7.4g.png') : require('../../assets/7/7.4.png')} style={{ height: Theme.height / 8, width: Theme.height / 6 }} />
               </TouchableOpacity>
@@ -757,7 +756,7 @@ if(a){
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 2.26 : Theme.width / 2.19, marginTop: Theme.height / 4, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
                 voic({ source: require("../../assets/7/7.5s.mp3") }),
-                funct({ id: 6, value: true, name: "Sponge", confetti: true }), conf(5), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[0].value == true ? fun() : null
+                  funct({ id: 6, value: true, name: "Sponge", confetti: true }), conf(5), arra[1].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[0].value == true ? fun() : null
               }} >
                 <Image source={arra[5].value ? require('../../assets/7/7.5g.png') : require('../../assets/7/7.5.png')} style={{ height: Theme.height / 15, width: Theme.height / 12 }} />
               </TouchableOpacity>
@@ -767,8 +766,8 @@ if(a){
             </View>
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 1.5 : Theme.width / 1.4, marginTop: Theme.height / 2, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => {
-                voic({ source: require("../../assets/7/7.6s.mp3") }), 
-                funct({ id: 2, value: true, name: "Tub", confetti: true }), conf(1), arra[0].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
+                voic({ source: require("../../assets/7/7.6s.mp3") }),
+                  funct({ id: 2, value: true, name: "Tub", confetti: true }), conf(1), arra[0].value == true && arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[5].value == true ? fun() : null
               }} >
                 <Image source={arra[1].value ? require('../../assets/7/7.6g.png') : require('../../assets/7/7.6.png')} style={{ height: Theme.height / 4.9, width: Theme.height / 4 }} />
               </TouchableOpacity>
@@ -788,34 +787,34 @@ if(a){
           <View>
             <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5}
-              onPress={() => voic({ source: require("../../assets/7/7.3s.mp3") })}
+                onPress={() => voic({ source: require("../../assets/7/7.3s.mp3") })}
               >
                 <Text style={arra[0].name == "Harmonica" ? styles.redText : styles.greyText}>Harmonica</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5}
-               onPress={() => voic({ source: require("../../assets/7/7.2s.mp3") })}
+                onPress={() => voic({ source: require("../../assets/7/7.2s.mp3") })}
               >
                 <Text style={arra[3].name == "Bubble" ? styles.redText : styles.greyText}>Bubble</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5}
-              onPress={() => voic({ source: require("../../assets/7/7.1s.mp3") })}
+                onPress={() => voic({ source: require("../../assets/7/7.1s.mp3") })}
               >
                 <Text style={arra[2].name == "Brush" ? styles.redText : styles.greyText}>Brush</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5}
-              onPress={() => voic({ source: require("../../assets/7/7.4s.mp3") })}
-              >
+                onPress={() => voic({ source: require("../../assets/7/7.4s.mp3") })}>
                 <Text style={arra[4].name == "Maracas" ? styles.redText : styles.greyText}>Maracas</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+
               <TouchableOpacity activeOpacity={0.5}
-              onPress={() => voic({ source: require("../../assets/7/7.5s.mp3") })}
+                onPress={() => voic({ source: require("../../assets/7/7.5s.mp3") })}
               >
                 <Text style={arra[5].name == "Sponge" ? styles.redText : styles.greyText}>Sponge</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5}
-               onPress={() => voic({ source: require("../../assets/7/7.6s.mp3") })}
+                onPress={() => voic({ source: require("../../assets/7/7.6s.mp3") })}
               >
                 <Text style={arra[1].name == "Tub" ? styles.redText : styles.greyText}>Tub</Text>
               </TouchableOpacity>
@@ -1230,11 +1229,11 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/14/14.1s.mp3") })}>
                 <Text style={arra[2].name == "Brush" ? styles.redText : styles.greyText}>Brush</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/14/14.4s.mp3") })}>
                 <Text style={arra[4].name == "Flea" ? styles.redText : styles.greyText}>Flea</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/14/14.5s.mp3") })}>
                 <Text style={arra[5].name == "Ukelele" ? styles.redText : styles.greyText}>Ukelele</Text>
               </TouchableOpacity>
@@ -1244,12 +1243,7 @@ if(a){
             </View>
           </View>
 
-          <View >
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-            </View>
-          </View>
+          
           <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.navigate('Home')}>
             <Image source={require('../../assets/cross.png')} style={{ height: Theme.height / 10, width: Theme.height / 9, marginRight: Theme.width / 20 }} />
           </TouchableOpacity>
@@ -1332,11 +1326,12 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/15/15.1s.mp3") })}>
                 <Text style={arra[2].name == "Boat" ? styles.redText : styles.greyText}>Boat</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/15/15.4s.mp3") })}>
                 <Text style={arra[4].name == "Rainbow" ? styles.redText : styles.greyText}>Rainbow</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+             
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/15/15.5s.mp3") })}>
                 <Text style={arra[5].name == "Xylophone" ? styles.redText : styles.greyText}>Xylophone</Text>
               </TouchableOpacity>
@@ -1383,7 +1378,7 @@ if(a){
             </View>
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 11 : Theme.width / 12, zIndex: 1 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/17/17.4s.mp3") }), funct({ id: 5, value: true, name: "Moon", confetti: true }), conf(4), arra[2].value == true && arra[3].value == true && arra[0].value == true && arra[5].value == true ? fun() : null }} >
-                <Image source={arra[4].value ? require('../../assets/17/17.4g.png') : require('../../assets/17/17.4.png')} style={ { height: Theme.height / 6, width: Theme.height / 6 }} />
+                <Image source={arra[4].value ? require('../../assets/17/17.4g.png') : require('../../assets/17/17.4.png')} style={{ height: Theme.height / 6, width: Theme.height / 6 }} />
               </TouchableOpacity>
               {arra[4].confetti && (
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -5 }} />
@@ -1473,7 +1468,7 @@ if(a){
             </View>
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 3 : Theme.width / 3.3, zIndex: 1, marginTop: Theme.height / 10 }]}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/30/30.4s.mp3") }), funct({ id: 5, value: true, name: "Violine", confetti: true }), conf(4), arra[2].value == true && arra[3].value == true && arra[0].value == true && arra[5].value == true ? fun() : null }} >
-                <Image source={arra[4].value ? require('../../assets/30/30.4g.png') : require('../../assets/30/30.4.png')} style={ { height: Theme.height / 5, width: Theme.height / 14 }} />
+                <Image source={arra[4].value ? require('../../assets/30/30.4g.png') : require('../../assets/30/30.4.png')} style={{ height: Theme.height / 5, width: Theme.height / 14 }} />
               </TouchableOpacity>
               {arra[4].confetti && (
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -8 }} />
@@ -1553,22 +1548,13 @@ if(a){
               )}
             </View>
             <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 1.23 : Theme.width / 1.30, zIndex: 1 }]}>
-              <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/18/18.4s.mp3") }), funct({ id: 5, value: true, name: "Poster", confetti: true }), conf(4), arra[2].value == true && arra[3].value == true && arra[0].value == true  ? fun() : null }} >
+              <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/18/18.4s.mp3") }), funct({ id: 5, value: true, name: "Poster", confetti: true }), conf(4), arra[2].value == true && arra[3].value == true && arra[0].value == true ? fun() : null }} >
                 <Image source={arra[4].value ? require('../../assets/18/18.4g.png') : require('../../assets/18/18.4.png')} style={arra[4].value ? { height: Theme.height / 5, width: Theme.height / 5 } : { height: Theme.height / 5, width: Theme.height / 5 }} />
               </TouchableOpacity>
               {arra[4].confetti && (
                 <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 5, width: Theme.width / 5, marginLeft: Theme.width / -5 }} />
               )}
             </View>
-            {/* <View style={[styles.ass, { marginLeft: isTablet ? Theme.width / 2.2 : Theme.width / 1.88, marginTop: Theme.height / 2.10, zIndex: 1 }]}>
-              <TouchableOpacity activeOpacity={0.5} onPress={() => { voic({ source: require("../../assets/18/18.1s.mp3") }), funct({ id: 6, value: true, name: "BoyArm", confetti: true }), conf(5), arra[2].value == true && arra[3].value == true && arra[4].value == true && arra[0].value == true ? fun() : null }} >
-                <Image source={arra[5].value ? require('../../assets/18/18.5.png') : require('../../assets/18/18.5.png')} style={{ height: Theme.height / 6, width: Theme.height / 3, }} />
-              </TouchableOpacity>
-              {arra[5].confetti && (
-                <Image source={require('../../assets/Confet.gif')} style={{ height: Theme.height / 6, width: Theme.width / 6, marginLeft: Theme.width / -8 }} />
-              )}
-            </View> */}
-
           </FastImage>
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: Theme.height / 70 }}>
@@ -1590,7 +1576,7 @@ if(a){
                 <Text style={arra[4].name == "Poster" ? styles.redText : styles.greyText}>Poster</Text>
               </TouchableOpacity>
             </View>
-           
+
           </View>
 
           <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.navigate('Home')}>
@@ -2109,11 +2095,12 @@ if(a){
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/24/24.1s.mp3") })}>
                 <Text style={arra[2].name == "Baton" ? styles.redText : styles.greyText}>Baton</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/24/24.4s.mp3") })}>
                 <Text style={arra[4].name == "Saxaphone" ? styles.redText : styles.greyText}>Saxaphone</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+             
               <TouchableOpacity activeOpacity={0.5} onPress={() => voic({ source: require("../../assets/24/24.5s.mp3") })}>
                 <Text style={arra[5].name == "Tambourine" ? styles.redText : styles.greyText}>Tambourine</Text>
               </TouchableOpacity>
@@ -2584,7 +2571,7 @@ if(a){
 export default AfterVideo
 
 const styles = StyleSheet.create({
-  backImage: { height: Theme.height / 1.2, width: Theme.width / 1,transform: [{ scale: 1 }] },
+  backImage: { height: Theme.height / 1.2, width: Theme.width / 1, transform: [{ scale: 1 }] },
   ass: {
     position: 'absolute',
     flexDirection: 'row', justifyContent: 'center'

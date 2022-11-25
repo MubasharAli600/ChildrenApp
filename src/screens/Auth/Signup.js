@@ -21,7 +21,7 @@ const Signup = (props) => {
 
         else {
             if (password != conferm) {
-                Toast.show('Password not matched with conferm password', Toast.LONG);
+                Toast.show('Password not matched with confirm password', Toast.LONG);
             }
             else {
                 setLoader(true)
@@ -85,7 +85,7 @@ const Signup = (props) => {
                             <TextInput onChangeText={(pass) => setPassword(pass)} value={password} placeholder='Password' style={{ fontFamily: Theme.fontFamilyO, height: Theme.height / 10, paddingStart: Theme.width / 60, fontSize: Theme.height / 30, color: 'grey' }} placeholderTextColor={'grey'} />
                         </View>
                         <View style={{ borderColor: Theme.black, borderWidth: 0.5, width: Theme.width / 3.8, borderRadius: Theme.height / 40, marginLeft: Theme.width / 80 }}>
-                            <TextInput onChangeText={(cPassword) => setConfermPassword(cPassword)} value={conferm} placeholder='Conferm Password' style={{ fontFamily: Theme.fontFamilyO, height: Theme.height / 10, paddingStart: Theme.width / 60, color: 'grey', fontSize: Theme.height / 30 }} placeholderTextColor={'grey'} />
+                            <TextInput onChangeText={(cPassword) => setConfermPassword(cPassword)} value={conferm} placeholder='Confirm Password' style={{ fontFamily: Theme.fontFamilyO, height: Theme.height / 10, paddingStart: Theme.width / 60, color: 'grey', fontSize: Theme.height / 30 }} placeholderTextColor={'grey'} />
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => SignupSubmit()} style={{ width: Theme.width / 3, backgroundColor: Theme.primary, padding: Theme.height / 30, alignItems: 'center', alignSelf: 'center', borderRadius: Theme.height / 40, marginTop: Theme.height / 30 }}>

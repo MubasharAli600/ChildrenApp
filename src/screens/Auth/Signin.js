@@ -77,7 +77,7 @@ const Signin = (props) => {
                         </TouchableOpacity>
                         <Pressable onPress={() => props.navigation.navigate('Signup')}>
 
-                            <Text style={{ color: Theme.primary, fontSize: Theme.height / 25, textAlign: 'center', fontFamily:Theme.fontFamilyG, marginTop: Theme.height / 40 }}>Signup</Text>
+                            <Text style={{ color: Theme.primary, fontSize: Theme.height / 25, textAlign: 'center', fontFamily:Theme.fontFamilyG, marginTop: Theme.height / 40 }}>Sign Up</Text>
                         </Pressable>
 
                     </View>

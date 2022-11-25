@@ -113,7 +113,7 @@ const Splash = (props) => {
                             <Text style={styles.text1}>Sound</Text>
                             <View>
                                 <Switch
-                                    style={{ marginLeft: Theme.height / -80 }}
+                                    style={{ marginLeft: Theme.height / -7 }}
                                     trackColor={{ false: Theme.primary, true: "green" }}
                                     thumbColor={sound ? "#f4f3f4" : Theme.grey}
                                     ios_backgroundColor={Theme.grey}
@@ -131,6 +131,8 @@ const Splash = (props) => {
                             <View>
                                 <Switch
                                     // style={{ alignSelf:'flex-start' }}
+                                    style={{ marginLeft: Theme.height / -7 }}
+
                                     trackColor={{ false: Theme.primary, true: "green" }}
                                     thumbColor={music ? "#f4f3f4" : Theme.grey}
                                     ios_backgroundColor={Theme.grey}
@@ -139,19 +141,19 @@ const Splash = (props) => {
                                 />
                             </View>
                             {!isTablet && (
-                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30 ,marginLeft:Theme.width/11}}>Share</Text></Pressable>
+                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30 ,marginLeft:Theme.width/10}}>Share</Text></Pressable>
                             )}
                         </View>
-                        <Pressable style={styles.modalView} onPress={async () => { await AsyncStorage.setItem("login", JSON.stringify(false)), setModalVisible(false) }}>
-                            <Text style={styles.text1}>Logout</Text>
-                        </Pressable>
+                      
                         {isTablet && (
                             <View>
-                                <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '500', }}>Help</Text>
-                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '500', marginVertical: Theme.height / 40 }}>Share</Text></Pressable>
-                                {/* <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontWeight: '500', fontSize: Theme.height / 30 }}>Review</Text> */}
+                                <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '700', }}>Help</Text>
+                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '700', marginVertical: Theme.height / 40 }}>Share</Text></Pressable>
                             </View>
                         )}
+                          <Pressable style={styles.modalView} onPress={async () => { await AsyncStorage.setItem("login", JSON.stringify(false)), setModalVisible(false) }}>
+                            <Text style={styles.text1}>Logout</Text>
+                        </Pressable>
                     </View>
                 </Modal>
                 <Modal
