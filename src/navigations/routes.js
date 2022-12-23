@@ -27,8 +27,9 @@ function Routes() {
         },[])
   return (
     <NavigationContainer >
-      <Stack.Navigator initialRouteName="Splash" screenOptions={{
-        headerShown:false
+      <Stack.Navigator  initialRouteName="Splash" screenOptions={{
+        headerShown:false,
+        navigationBarHidden:true
       }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Home" component={Home} />
@@ -41,8 +42,6 @@ function Routes() {
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Stories" component={Stories} />
-
-
       </Stack.Navigator>
     </NavigationContainer>
   );

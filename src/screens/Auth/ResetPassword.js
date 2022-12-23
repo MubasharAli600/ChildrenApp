@@ -25,6 +25,7 @@ const ResetPassword = (props) => {
             email: email, password: password
         })
             .then(function (response) {
+                setLoader(false)
                 console.log(response?.data);
                 if (response?.data.response == 1) {
                     console.log(response?.data);
@@ -50,7 +51,7 @@ const ResetPassword = (props) => {
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Theme.height / 20 }}>
                     <Pressable onPress={() => props.navigation.navigate('Signin')}>
-                        <Image source={require('../../assets/backIcon.png')} style={{ height: Theme.height / 10, width: Theme.height / 9, marginStart: Theme.width / 30 }} />
+                        <Image source={require('../../assets/Pick-Left.png')} style={{ height: Theme.height / 10, width: Theme.height / 8.5, marginStart: Theme.width / 30 }} />
                     </Pressable>
                     <Text style={{ color: Theme.primary, fontSize: Theme.height / 13, textAlign: 'center', fontWeight: 'bold', marginTop: Theme.height / 40, marginRight: Theme.width / 13 }}>ResetPassword</Text>
                     <View></View>

@@ -1,3 +1,3 @@
 import axios from "axios";
-const instance ="https://gloneweb.com/videoApp/";
+const instance ="https://metaverse-games.ca/api/";
 export {instance};

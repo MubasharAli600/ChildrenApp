@@ -32,34 +32,29 @@ const VideoScreen = (props) => {
             <StatusBar hidden />
             <View style={{ position: 'absolute', justifyContent: 'space-between', width: Theme.width / 1, top: Theme.height / 20, zIndex: 1, flexDirection: 'row' }}>
                 <Pressable onPress={() => props.navigation.goBack()}>
-                    <Image source={require('../../assets/backIcon.png')} style={{ height: Theme.height / 13, width: Theme.height / 12, marginLeft: Theme.width / 20 }} />
+                    <Image source={require('../../assets/Pick-Left.png')} style={{ height: Theme.height / 9.6, width: Theme.height / 8, marginLeft: Theme.width / 20 }} />
                 </Pressable>
-                <Pressable onPress={
+                {/* <Pressable onPress={
                     () => props.navigation.navigate('AfterVideo', { back: dd })
                     // () => props.navigation.goBack()
                 }>
                     <Image source={require('../../assets/cross.png')} style={{ height: Theme.height / 13, width: Theme.height / 12, marginRight: Theme.width / 20 }} />
-                </Pressable>
+                </Pressable> */}
             </View>
+          
             <VideoPlayer
                 paused={videopause}
-                video={{ uri: dd.video_link }}
-                videoWidth={Theme.width / 1}
-                videoHeight={Theme.height / 1}
+                video={{ uri: dd?.video_link }}
+                videoWidth={Theme.width}
+                videoHeight={Theme.height/1.05}
                 muted={!flag}
                 onEnd={() => props.navigation.navigate('AfterVideo', { back: dd })}
-                autoplay
-                thumbnail={{ uri: dd.thumbnail }}
+                // autoplay
+                thumbnail={{ uri: dd?.thumbnail }}
             />
-            {/* <Video source={{ uri: dd.video_link }}
-                style={styles.video}
-                // paused={videopause}
-                controls={true}
-                // onLoadStart={()=>setLoader(true)}
-                resizeMode={'cover'}
-                
-                onEnd={() => props.navigation.navigate('AfterVideo', { back: dd })}
-            /> */}
+    
+           
+            
         </View>
     )
 }

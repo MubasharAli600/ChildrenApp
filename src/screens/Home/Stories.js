@@ -6,14 +6,12 @@ const Stories = () => {
   return (
     <View style={{flex:1}}>
      <WebView
-
         source={{
-          uri: 'https://jfj.netlify.app/#/'
+          uri: 'https://sea-lion-app-p8buj.ondigitalocean.app/#/'
         }}
         style={{ backgroundColor:'black' }}
       />
     </View>
   )
 }
-
 export default Stories

@@ -16,13 +16,10 @@ import { useFocusEffect } from '@react-navigation/native';
 
 const isTablet = DeviceInfo.isTablet();
 
-
-
 const Home = (props) => {
   const [search,setSearch]=useState("")
   const [data, setData] = useState([])
   const [alldata, setAllData] = useState([])
-
   const [infoModal, setInfoModal] = useState(false)
   const [loading, setLoading] = useState(false)
   const [loginFlag, setLogin] = useState()
@@ -36,9 +33,12 @@ const Home = (props) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      getData();
     }, [])
   );
+  useEffect(()=>{
+    getData();
+
+  },[])
 
   const Gpay = () => {
     const allowedCardAuthMethods = ['PAN_ONLY', 'CRYPTOGRAM_3DS'];
@@ -66,16 +66,12 @@ const Home = (props) => {
       },
       merchantName: "Jermy and Jezzy",
     };
-    // Set the environment before the payment request
     GooglePay.setEnvironment(GooglePay.ENVIRONMENT_TEST);
-    // Check if Google Pay is available
     GooglePay.isReadyToPay(allowedCardNetworks, allowedCardAuthMethods).then(
       (ready) => {
         if (ready) {
-          // Request payment token
           GooglePay.requestPayment(requestData)
             .then((token) => {
-              // Send a token to your payment gateway
             })
             .catch((error) => console.log(error.code, error.message));
         }
@@ -85,7 +81,6 @@ const Home = (props) => {
   const Apay = async () => {
     setInfoModal(false)
     if (!isApplePaySupported) return;
-
     const { error } = await presentApplePay({
       cartItems: [{ label: 'Season Paryment', amount: '10.00', paymentType: 'Immediate' }],
       country: 'US',
@@ -113,7 +108,7 @@ const Home = (props) => {
       );
 
       if (confirmError) {
-        // handle error
+
       }
     }
   };
@@ -121,31 +116,43 @@ const Home = (props) => {
     let a = await AsyncStorage.getItem("login")
     setLogin(a)
     setLoading(true)
-    await axios.get('https://gloneweb.com/videoApp/api/getAllVideos.php')
-      .then(function (response) {
-        console.log(JSON.stringify(response?.data?.data, null, 2));
-        let d = response?.data?.data;
-        setData(d)
-        setAllData(d)
-        setLoading(false)
+ 
+     await axios.get('https://metaverse-games.ca/api/api/getAllVideos.php')
+      .then((response)=> {
+       
+          setLoading(false)
+          // console.log("eror");
+          console.log(JSON.stringify(response?.data?.data, null, 2));
+          let d = response?.data?.data;
+          setData(d)
+          setAllData(d)
+         
+        
+        
       })
-      .catch(function (error) {
+      .catch((error)=> {
+        console.log("error");
         setLoading(false)
-        console.log(error);
-      });
+        console.log(error,"eror");
+      }).finally(()=>{
+        setLoading(false)
+
+      })
+   
+   
   }
   return (
     <View style={{ flex: 1 }}>
 
       <ScrollView style={styles.flatView}>
 
-        <FastImage source={require('../../assets/homeBack.png')} style={{ height: Theme.width / 3.6, width: Theme.width / 1 }} >
+        <FastImage source={require('../../assets/homeBack.png')} style={{ height: Theme.width / 3.6, width: '100%' }} >
           <View style={styles.main}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <Image source={require('../../assets/backIcon.png')} style={{ height: Theme.height / 10, width: Theme.height / 9 }} />
+              <Image source={require('../../assets/Pick-Left.png')} style={{ height: Theme.height / 10, width: Theme.height / 8.5 }} />
             </TouchableOpacity>
             <View style={{ alignItems: 'center', justifyContent: 'center', alignSelf: 'center', marginLeft: Theme.width / 23 }}>
-              <Image source={require('../../assets/logo.png')} style={{ height: Theme.height / 4.4, width: Theme.height / 3 }} />
+              <Image source={require('../../assets/iconLogo.png')} style={{ height: Theme.height / 3.59, width: Theme.height / 3 }} />
 
             </View>
             <View style={styles.rowView}>
@@ -173,21 +180,16 @@ const Home = (props) => {
           </View>
 
         </FastImage>
-        <Text style={{ fontSize: Theme.height / 20, color: Theme.primary, fontFamily: Theme.fontFamilyG, marginLeft: Theme.width / 10 }}>SEASON 1</Text>
-
- 
-          {data?.length < 1 ? (
+        <Text style={{ fontSize: Theme.height / 20, color: Theme.primary, fontFamily: Theme.fontFamilyG, marginLeft: Theme.width / 10 }}>Season 1</Text>
+          {loading ? (
             <ActivityIndicator animating={loading} color={Theme.primary} size={Theme.height / 15} />
           ) : (
             <FlatList
-              data={data}
-              // horizontal
+              data={data ||[]}
               numColumns={isTablet ? 5 : 6}
               renderItem={({ item, index }) => (
                 <View style={styles.listItem}>
-                  {/* <ActivityIndicator color={Theme.grey}  animating={loading}  /> */}
                   <Pressable style={loginFlag == "false" ? index > 3 ? styles.tabgrey : null : null} onPress={async () => {
-
                      index > 3 ? loginFlag=="true"?
                       props.navigation.navigate('VideoScreen', { data: item }) 
                        : setInfoModal(true):props.navigation.navigate('VideoScreen', { data: item }) 
@@ -201,8 +203,7 @@ const Home = (props) => {
           )}
           <Text style={{ fontSize: Theme.height / 20, marginTop: Theme.height / 10, color: Theme.primary, fontFamily: Theme.fontFamilyG, textAlign: 'center', marginTop: Theme.height / 4, }}>Season 2 Coming Soon!</Text>
 
-          <ImageBackground source={require('../../assets/footer.png')} style={{ marginTop: Theme.height / 10, height: Theme.height / 1, width: Theme.width / 1, justifyContent: 'center', alignItems: 'center' }} >
-          </ImageBackground>
+          <FastImage source={require('../../assets/footer.png')} style={{ marginTop: Theme.height / 10, height: Theme.height / 1, width: Theme.width / 1, justifyContent: 'center', alignItems: 'center' }}          />
      
       </ScrollView>
       <Modal
@@ -317,6 +318,7 @@ const styles = StyleSheet.create({
   },
   flatView: {
     marginTop: Theme.height / -40
+    ,flex:1
   },
   listItem: {
     justifyContent: 'space-evenly',

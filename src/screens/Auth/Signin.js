@@ -22,10 +22,10 @@ const Signin = (props) => {
             .then(async function (response) {
                 // console.log(response?.data);
                 if (response?.data.response == 1) {
-                    Toast.show("Login Successfully", Toast.LONG);
-                    setLoader(false)
-                    await AsyncStorage.setItem("login",JSON.stringify(true))
-                    props.navigation.replace("Home")
+                    Toast.show("Server Error", Toast.LONG);
+                    // setLoader(false)
+                    // await AsyncStorage.setItem("login",JSON.stringify(true))
+                    // props.navigation.replace("Home")
                 //   let a=  await AsyncStorage.getItem("login")
                     // props.navigation.replace('')
                 }
@@ -47,10 +47,10 @@ const Signin = (props) => {
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: Theme.height / 20 }}>
                   <TouchableOpacity onPress={()=>props.navigation.goBack()}>
-                  <Image source={require('../../assets/backIcon.png')} style={{ height: Theme.height / 10, width: Theme.height / 9 }} />
+                  <Image source={require('../../assets/Pick-Left.png')} style={{ height: Theme.height / 10, width: Theme.height / 8.5 }} />
 
                   </TouchableOpacity>
-                    <Image source={require('../../assets/logo.png')} style={styles.logo} />
+                    <Image source={require('../../assets/iconLogo.png')} style={styles.logo} />
                     <View></View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: Theme.height / 20 }}>
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        height: Theme.height / 4.8,
-        width: Theme.height / 3.3,
+        height: Theme.height / 4,
+        width: Theme.height / 3.36,
         // marginLeft: Theme.width / 10,
 
         marginRight: Theme.width / 8,

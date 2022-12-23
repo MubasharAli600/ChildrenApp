@@ -13,12 +13,19 @@ const Splash = (props) => {
     const [music, setMusic] = useState(true);
     const [ofline, setOfline] = useState(false);
     const isTablet = DeviceInfo.isTablet();
+    const [login, setLogin] = useState(false);
+
+
 
     useEffect(() => {
         StatusBar.setHidden(true)
         ByDefault()
     }, [])
     const ByDefault = async () => {
+
+
+        let a = await AsyncStorage.getItem("login")
+        setLogin(a)
         let sound = await AsyncStorage.getItem("sound");
         let music = await AsyncStorage.getItem("music");
         // console.log(JSON.parse (sound),"sound");
@@ -83,7 +90,7 @@ const Splash = (props) => {
                             <Image source={require('../../assets/setting.png')} style={styles.setting} />
                         </Pressable>
                     </View>
-                    <Image source={require('../../assets/logo.png')} style={styles.logo} />
+                    <Image source={require('../../assets/iconLogo.png')} style={styles.logo} />
                     <View></View>
                 </View>
                 <View style={styles.btnView}>
@@ -104,7 +111,7 @@ const Splash = (props) => {
                     animationInTiming={800}
                     onBackdropPress={() => setModalVisible(false)}
                     // hasBackdrop={false}
-                    style={{marginHorizontal: 0,}}
+                    style={{ marginHorizontal: 0, }}
                     // deviceHeight={Theme.height/}
                     isVisible={modalVisible}>
                     <View style={styles.modalMainView}>
@@ -122,7 +129,7 @@ const Splash = (props) => {
                                 />
                             </View>
                             {!isTablet && (
-                                <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30,marginLeft:Theme.width/10 }}>Help</Text>
+                                <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30, marginLeft: Theme.width / 10 }}>Help</Text>
 
                             )}
                         </View>
@@ -141,19 +148,26 @@ const Splash = (props) => {
                                 />
                             </View>
                             {!isTablet && (
-                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30 ,marginLeft:Theme.width/10}}>Share</Text></Pressable>
+                                <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyG, fontSize: Theme.height / 30, marginLeft: Theme.width / 10 }}>Share</Text></Pressable>
                             )}
                         </View>
-                      
+
                         {isTablet && (
                             <View>
                                 <Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '700', }}>Help</Text>
                                 <Pressable onPress={() => shar()}><Text style={{ color: Theme.black, fontFamily: Theme.fontFamilyGR, fontSize: Theme.height / 30, fontWeight: '700', marginVertical: Theme.height / 40 }}>Share</Text></Pressable>
                             </View>
                         )}
-                          <Pressable style={styles.modalView} onPress={async () => { await AsyncStorage.setItem("login", JSON.stringify(false)), setModalVisible(false) }}>
-                            <Text style={styles.text1}>Logout</Text>
-                        </Pressable>
+                        {login != "true" ? (
+                            <Pressable style={styles.modalView} onPress={async () =>{ props.navigation.navigate('Signin'),setModalVisible(false)}}>
+                                <Text style={styles.text1}>Login</Text>
+                            </Pressable>
+                        ) : (
+                            <Pressable style={styles.modalView} onPress={async () => { await AsyncStorage.setItem("login", JSON.stringify(false)), setModalVisible(false) }}>
+                                <Text style={styles.text1}>Logout</Text>
+                            </Pressable>
+                        )}
+
                     </View>
                 </Modal>
                 <Modal
@@ -167,20 +181,20 @@ const Splash = (props) => {
                     onBackdropPress={() => setInfoModal(false)}
                     // hasBackdrop={false}
                     // deviceHeight={Theme.height/}
-                    style={{marginHorizontal: 0,}}
-                    
+                    style={{ marginHorizontal: 0, }}
+
                     isVisible={infoModal}>
-                    <View style={[styles.modalMainView, { width: Theme.width / 1.1, padding: Theme.height / 20,height:isTablet? Theme.height/1.1:Theme.height/1.7, flexDirection: 'row' ,flex:1,}]}>
+                    <View style={[styles.modalMainView, { width: Theme.width / 1.1, padding: Theme.height / 20, height: isTablet ? Theme.height / 1.1 : Theme.height / 1.7, flexDirection: 'row', flex: 1, }]}>
                         <View style={{ width: Theme.width / 2.7 }}>
                             <Text style={{ fontSize: Theme.height / 15, fontFamily: Theme.fontFamilyG, color: Theme.secondary, }} >Information</Text>
-                            <Text style={{ color: Theme.black, textAlign: 'justify', fontFamily: Theme.fontFamilyO, fontSize:isTablet? Theme.height / 42 :Theme.height/36}}>Jeremy and Jazzy is an animated musical adventure series about song and story creation for 3-7 year olds that parents will love just as much. It’s about how feelings become songs, songs become stories, and how music, friendship and collaboration create joy.
+                            <Text style={{ color: Theme.black, textAlign: 'justify', fontFamily: Theme.fontFamilyO, fontSize: isTablet ? Theme.height / 42 : Theme.height / 36 }}>Jeremy and Jazzy is an animated musical adventure series about song and story creation for 3-7 year olds that parents will love just as much. It’s about how feelings become songs, songs become stories, and how music, friendship and collaboration create joy.
                                 It’s here Jeremy (a storytelling songwriter), his best friend Jazzy (co-vocalist and dancing queen), Stu (a Studio Rat who loves to listen and help), and Tunebug (a musical recording studio on wheels) make music with the Kids-At-Home.
                                 minute Jeremy and Jazzy Short invites viewers to sing, dance and discover stories in songs and wonder in the world.
                                 <Text style={{ fontFamily: Theme.fontFamilyO, fontSize: Theme.height / 45 }}>Each 2 x 11 minute</Text>  Jeremy and Jazzy Special invites viewers to create a song with Jeremy and Jazzy and join them on an adventure where their song comes to life in an animated musical!</Text>
                         </View>
                         <View style={{ width: Theme.width / 2.8, marginLeft: Theme.width / 20 }}>
                             {/* <Text style={{ fontSize: Theme.height / 20, color: Theme.secondary, fontWeight: '500' }} >Information</Text> */}
-                            <Text style={{ color: Theme.black, fontSize: isTablet? Theme.height / 45:Theme.height/36, marginTop: Theme.height / 80, fontFamily: Theme.fontFamilyO, }}>The goal is to bring kids joy by participating in music.
+                            <Text style={{ color: Theme.black, fontSize: isTablet ? Theme.height / 45 : Theme.height / 36, marginTop: Theme.height / 80, fontFamily: Theme.fontFamilyO, }}>The goal is to bring kids joy by participating in music.
                                 The series stars award-winning musicians Jeremy Fisher (Jeremy) and Aiza Ntibarikure (Jazzy), plus celebrity musical guests. Series music is written and composed by Jeremy Fisher, who also acts as an executive producer. Aiza Ntibarikure is the series co-lead and acts as a consulting producer. A JUNO-nominated afro-pop singer-songwriter, Aiza is also an accomplished actor and host.
                                 Jeremy and Jazzy is a 360° children’s entertainment brand which includes music, television, game, book, live performance entertainment, and e-learning, available for worldwide distribution in Fall 2022. Vérité Films holds all rights associated with the brand.</Text>
                             <View style={{ flexDirection: 'row', marginTop: Theme.height / 36 }}>
@@ -246,7 +260,7 @@ const styles = StyleSheet.create({
         width: Theme.height / 50
     },
     logo: {
-        height: Theme.height / 3.7,
+        height: Theme.height / 3.07,
         width: Theme.height / 2.55,
         marginRight: Theme.width / 6,
     },

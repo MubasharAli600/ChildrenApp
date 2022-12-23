@@ -50,10 +50,10 @@ setLoader(false)
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: Theme.height / 20 }}>
                     <Pressable onPress={()=>props.navigation.goBack()}>
-                    <Image source={require('../../assets/backIcon.png')} style={{ height: Theme.height / 10, width: Theme.height / 9 }} />
+                    <Image source={require('../../assets/Pick-Left.png')} style={{ height: Theme.height / 10, width: Theme.height / 8.5 }} />
 
                     </Pressable>
-                    <Image source={require('../../assets/logo.png')} style={styles.logo} />
+                    <Image source={require('../../assets/iconLogo.png')} style={styles.logo} />
                     <View></View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: Theme.height / 20 }}>
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        height: Theme.height / 4.8,
-        width: Theme.height / 3.3,
+        height: Theme.height / 4,
+        width: Theme.height / 3.36,
         // marginLeft: Theme.width / 10,
 
         marginRight: Theme.width / 8,
