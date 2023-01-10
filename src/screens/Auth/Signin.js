@@ -22,10 +22,10 @@ const Signin = (props) => {
             .then(async function (response) {
                 // console.log(response?.data);
                 if (response?.data.response == 1) {
-                    Toast.show("Server Error", Toast.LONG);
-                    // setLoader(false)
-                    // await AsyncStorage.setItem("login",JSON.stringify(true))
-                    // props.navigation.replace("Home")
+                    Toast.show("Login Successfully", Toast.LONG);
+                    setLoader(false)
+                    await AsyncStorage.setItem("login",JSON.stringify(true))
+                    props.navigation.replace("Home")
                 //   let a=  await AsyncStorage.getItem("login")
                     // props.navigation.replace('')
                 }

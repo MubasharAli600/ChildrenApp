@@ -49,7 +49,7 @@ const VideoScreen = (props) => {
                 videoHeight={Theme.height/1.05}
                 muted={!flag}
                 onEnd={() => props.navigation.navigate('AfterVideo', { back: dd })}
-                // autoplay
+                autoplay
                 thumbnail={{ uri: dd?.thumbnail }}
             />
     
